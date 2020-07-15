@@ -43,7 +43,7 @@ class Clock extends React.Component<AppProps, AppState> {
 function App() {
   return (
     <div>
-      <Welcome name="Tom" />
+      <Welcome name="User" />
       <Clock />
     </div>
   );
