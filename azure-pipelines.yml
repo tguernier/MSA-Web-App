@@ -1,10 +1,6 @@
 trigger:
 - master
 
-variables:
-  rootDir: 'my-app'
-  buildDir: '$(rootDir)/build'
-
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -15,15 +11,13 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    cd $(rootDir)
     npm install
     npm run build
-    cd ..
   displayName: 'npm install and build'
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(buildDir)'
+    rootFolderOrFile: 'build'
     includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
