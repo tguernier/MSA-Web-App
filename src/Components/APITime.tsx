@@ -3,25 +3,30 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 
+var options = {hour12: false} // 24 hour time format
+
 interface IState {
   datetime: string;
+  dst : boolean;
 }
 
 function APITime() {
-  const [TimeData, setTimeData] = useState<IState[]>([{datetime: '' }]);
+  const [TimeData, setTimeData] = useState<IState>({datetime: '', dst: false});
 
   useEffect(() => {
     fetch('http://worldtimeapi.org/api/ip')
     .then(response => response.json())
-    .then(response => {setTimeData(response.datetime);})
+    .then(response => {setTimeData(response);})
     .catch(error => console.log(error))
   }, []);
 
-  console.log(TimeData.toString());
-
+  var DateTime = new Date(TimeData['datetime']);
+  console.log(DateTime);
+ 
   return (
     <div>
-      <h5>{TimeData.toString()}</h5>
+      <h5>It is {DateTime.toLocaleTimeString('en-NZ', options)} on {DateTime.toLocaleDateString('en-NZ')}</h5>
+      <h5>Is it DST?: {TimeData['dst'].toString()}</h5>
     </div>
   )
 }
