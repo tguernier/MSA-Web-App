@@ -25,7 +25,7 @@ function APITime() {
  
   return (
     <div>
-      <h5>It is {DateTime.toLocaleTimeString('en-NZ', options)} on {DateTime.toLocaleDateString('en-NZ')}</h5>
+      <h1>It is {DateTime.toLocaleTimeString('en-NZ', options)} on {DateTime.toLocaleDateString('en-NZ')}</h1>
       <h5>Is it DST?: {TimeData['dst'].toString()}</h5>
     </div>
   )
