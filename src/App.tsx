@@ -36,7 +36,7 @@ function App() {
     <div>
       <LocationSelectBar SetUserInput = {(a: IUserInput) => SetUserInput(a)}/>
       <Welcome name="User" />
-      <APITime />
+      <APITime SearchRegion={UserInput.SearchRegion} SearchCity={UserInput.SearchCity}/>
     </div>
   );
 }

@@ -10,22 +10,25 @@ interface IState {
   dst : boolean;
 }
 
-function APITime() {
+interface IAPITimeProps {
+  SearchRegion: (string | null);
+  SearchCity: (string | null);
+}
+
+function APITime(props: IAPITimeProps) {
   const [TimeData, setTimeData] = useState<IState>({datetime: '', dst: false});
 
   useEffect(() => {
-    fetch('http://worldtimeapi.org/api/ip')
+    fetch('http://worldtimeapi.org/api/timezone/' + props.SearchRegion + '/' + props.SearchCity)
     .then(response => response.json())
     .then(response => {setTimeData(response);})
     .catch(error => console.log(error))
-  }, []);
+  }, [props.SearchRegion, props.SearchCity]);
 
-  var DateTime = new Date(TimeData['datetime']);
-  console.log(DateTime);
  
   return (
     <div>
-      <h1>It is {DateTime.toLocaleTimeString('en-NZ', options)} on {DateTime.toLocaleDateString('en-NZ')}</h1>
+      <h1>It is {TimeData['datetime'].slice(0,10)} on {TimeData['datetime'].slice(11,19)}</h1>
       <h5>Is it DST?: {TimeData['dst'].toString()}</h5>
     </div>
   )

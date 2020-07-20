@@ -39,6 +39,9 @@ function LocationSelectBar(props: ILocationSelectBarProps) {
     }
 
     const handleSubmit = () => {
+        console.log(SearchRegion);
+        console.log(SearchCity);
+        
         if (SearchCity?.length !== 0 && SearchCity !== null && SearchCity !== "") {
             let UserInput: IUserInput = {
                 SearchCity: SearchCity,
