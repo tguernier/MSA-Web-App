@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 
-var options = {hour12: false} // 24 hour time format
-
 interface IState {
   datetime: string;
   dst : boolean;
