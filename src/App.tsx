@@ -32,7 +32,7 @@ function App() {
       <LocationSelectBar SetUserInput = {(a: IUserInput) => SetUserInput(a)}/>
       <APITime SearchRegion={UserInput.SearchRegion} SearchCity={UserInput.SearchCity}/>
       <Typography color="textSecondary">
-        This app was made by <a href='https://github.com/tguernier'>Tom Guernier</a> for the <a href='https://nzmsa.netlify.app'> Microsoft Student Accelerator Programme</a> 2020.
+        This app was made by <a href='https://github.com/tguernier'>Tom Guernier</a> for the <a href='https://nzmsa.netlify.app'> Microsoft Student Accelerator</a> Programme 2020.
       </Typography>
     </div>
   );
