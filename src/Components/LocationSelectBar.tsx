@@ -33,7 +33,7 @@ function LocationSelectBar(props: ILocationSelectBarProps) {
         
         if (SearchCity?.length !== 0 && SearchCity !== null && SearchCity !== "") {
             let UserInput: IUserInput = {
-                SearchCity: SearchCity,
+                SearchCity: SearchCity.replace(' ', '_'), // the API has underscores instead of spaces in place names
                 SearchRegion: SearchRegion,
             }
             props.SetUserInput(UserInput);
@@ -47,7 +47,7 @@ function LocationSelectBar(props: ILocationSelectBarProps) {
     return <div className="SearchBarContainer">
         <Grid container spacing={3}>
             <FormControl>
-                <InputLabel htmlFor="region-select-label">Select Region</InputLabel>
+                <InputLabel htmlFor="region-select-label">Region</InputLabel>
                 <Select
                     labelId="region-select-label"
                     id="region-select"
@@ -66,7 +66,7 @@ function LocationSelectBar(props: ILocationSelectBarProps) {
                 <TextField
                     required
                     id="outlined-required"
-                    label="Search"
+                    label="City"
                     variant="outlined"
                     error={HasFocus && SearchCity === ""}
                     onClick={() => setHasFocus(true)}
