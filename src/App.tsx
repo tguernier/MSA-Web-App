@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import APITime from './Components/APITime';
 import LocationSelectBar from './Components/LocationSelectBar';
 import { IUserInput } from './Common/Interfaces';
-import {createMuiTheme, MuiThemeProvider} from '@material-ui/core';
+import {createMuiTheme, MuiThemeProvider, Typography} from '@material-ui/core';
 
 import './App.css';
 
@@ -18,10 +18,6 @@ const theme = createMuiTheme({
   },
 })
 
-function Welcome(props: { name: React.ReactNode; }) {  
-  return <h1>Hello, {props.name}</h1>;
-}
-
 function App() {
   const [UserInput, setUserInput] = useState<IUserInput>({
     SearchRegion: 'Pacific',
@@ -34,7 +30,6 @@ function App() {
   return (
     <div>
       <LocationSelectBar SetUserInput = {(a: IUserInput) => SetUserInput(a)}/>
-      <Welcome name="User" />
       <APITime SearchRegion={UserInput.SearchRegion} SearchCity={UserInput.SearchCity}/>
     </div>
   );

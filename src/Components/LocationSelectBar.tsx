@@ -33,7 +33,7 @@ function LocationSelectBar(props: ILocationSelectBarProps) {
         
         if (SearchCity?.length !== 0 && SearchCity !== null && SearchCity !== "") {
             let UserInput: IUserInput = {
-                SearchCity: SearchCity.replace(' ', '_'), // the API has underscores instead of spaces in place names
+                SearchCity: SearchCity,
                 SearchRegion: SearchRegion,
             }
             props.SetUserInput(UserInput);
