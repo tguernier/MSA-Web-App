@@ -21,6 +21,7 @@ interface IAPITimeProps {
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
+    minHeight: 175
   },
   title: {
     fontSize: 14,
@@ -48,17 +49,25 @@ function APITime(props: IAPITimeProps) {
       setIsLoading(false);})
   }, [props.SearchRegion, props.SearchCity]);
   
-  if (isLoading) {
+  if (isLoading === true) {
     return(
-      <Card className={classes.root}>
-        <CircularProgress />
+      <Card className={classes.root} style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',  
+      }}>
+        <CircularProgress size={80}/>
       </Card>
     )
   }
   
   if (TimeData['datetime'] === undefined || TimeData['dst'] === undefined) {
     return (
-      <Card className={classes.root}>
+      <Card className={classes.root} style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',  
+      }}>
         <Typography variant="h3" component="h1">
           Invalid location!
         </Typography>

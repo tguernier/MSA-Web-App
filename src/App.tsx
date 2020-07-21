@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import APITime from './Components/APITime';
 import LocationSelectBar from './Components/LocationSelectBar';
 import { IUserInput } from './Common/Interfaces';
-import {createMuiTheme} from '@material-ui/core';
+import {createMuiTheme, Typography} from '@material-ui/core';
 
 import './App.css';
 
@@ -31,6 +31,9 @@ function App() {
     <div>
       <LocationSelectBar SetUserInput = {(a: IUserInput) => SetUserInput(a)}/>
       <APITime SearchRegion={UserInput.SearchRegion} SearchCity={UserInput.SearchCity}/>
+      <Typography color="textSecondary">
+        This app was made by <a href='https://github.com/tguernier'>Tom Guernier</a> for the <a href='https://nzmsa.netlify.app'> Microsoft Student Accelerator Programme</a> 2020.
+      </Typography>
     </div>
   );
 }
