@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import SystemTime from './Components/SystemTime';
 import APITime from './Components/APITime';
 import LocationSelectBar from './Components/LocationSelectBar';
 import { IUserInput } from './Common/Interfaces';
