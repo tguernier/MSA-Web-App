@@ -5,6 +5,7 @@ import '../App.css';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 
 interface IState {
@@ -31,15 +32,29 @@ const useStyles = makeStyles({
 
 function APITime(props: IAPITimeProps) {
   const classes = useStyles();
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const [TimeData, setTimeData] = useState<IState>({datetime: '', dst: false});
 
   useEffect(() => {
+    setIsLoading(true);
     fetch('http://worldtimeapi.org/api/timezone/' + props.SearchRegion + '/' + props.SearchCity?.replace(' ', '_')) // the API has underscores instead of spaces in place names
     .then(response => response.json())
-    .then(response => {setTimeData(response);})
-    .catch(error => {console.log(error)})
+    .then(response => {
+      setTimeData(response);
+      setIsLoading(false);})
+    .catch(error => {
+      console.log(error);
+      setIsLoading(false);})
   }, [props.SearchRegion, props.SearchCity]);
+  
+  if (isLoading) {
+    return(
+      <Card className={classes.root}>
+        <CircularProgress />
+      </Card>
+    )
+  }
   
   if (TimeData['datetime'] === undefined || TimeData['dst'] === undefined) {
     return (
@@ -68,10 +83,6 @@ function APITime(props: IAPITimeProps) {
         </Typography>
       </CardContent>
     </Card>
-    // <div>
-    //   <h1>It is {TimeData['datetime'].slice(11,16)} on {TimeData['datetime'].slice(0,10)} in {props.SearchCity}.</h1>
-    //   <h5>It <b>{TimeData['dst'] ? 'is' : 'is not'}</b> daylight saving time right now.</h5>
-    // </div>
   )
 }
 

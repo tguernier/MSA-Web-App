@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import APITime from './Components/APITime';
 import LocationSelectBar from './Components/LocationSelectBar';
 import { IUserInput } from './Common/Interfaces';
-import {createMuiTheme, MuiThemeProvider, Typography} from '@material-ui/core';
+import {createMuiTheme} from '@material-ui/core';
 
 import './App.css';
 
