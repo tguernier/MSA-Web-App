@@ -5,7 +5,9 @@ This React web app was developed for the [Microsoft Student Accelerator](https:/
 
 ## Screenshots
 ![](https://i.imgur.com/OtEQt1E.png)
+***
 ![](https://i.imgur.com/BKDmT6P.png)
+***
 ![](https://i.imgur.com/dVv9hAQ.png)
 
 ## Build Process Description
